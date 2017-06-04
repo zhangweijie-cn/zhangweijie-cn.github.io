@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="群里的小伙伴，提了一个问题。他用两种方法生成了两个二维数组，看着一样，表现却不一样。
+第一种方法，比较传统。
+123456789101112function generate2dArray(len) &amp;#123;    const table = []    for(let i = 0; i &amp;lt">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Zhang Weijie">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="JS 生成二维数组"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Zhang Weijie&#39;s blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>JS 生成二维数组 - Zhang Weijie&#39;s blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Zhang Weijie's blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Zhang Weijie's blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
+                    Archives
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">JS 生成二维数组</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2017-06-02</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+
+                    <!-- Main Post Content -->
+                    <p>群里的小伙伴，提了一个问题。他用两种方法生成了两个二维数组，看着一样，表现却不一样。</p>
+<p>第一种方法，比较传统。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">generate2dArray</span>(<span class="params">len</span>) </span>&#123;</div><div class="line">    <span class="keyword">const</span> table = []</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">        <span class="keyword">const</span> temp = []</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</div><div class="line">            temp.push(<span class="number">0</span>)</div><div class="line">        &#125;</div><div class="line">        table.push(temp)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> table</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第二种方式，非常的简短。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">generate2dArray</span>(<span class="params">len</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>(len).fill(<span class="built_in">Array</span>(len).fill(<span class="number">0</span>))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>跑一下，第二个结果与第一个看似长得一样，但是第二个却是错误的。因为 fill 的是对同一个数组的引用。可以通过下面的代码进行验证。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> table = generate2dArray(<span class="number">2</span>)</div><div class="line"><span class="built_in">console</span>.log(table[<span class="number">0</span>] === table[<span class="number">1</span>]) <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>那么有没有一种简短的方法可以生成这样一个二维数组呢，很容易就想到了用 map。于是我写了这样的代码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">generate2dArray</span>(<span class="params">len</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>(len).map(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">Array</span>(len).fill(<span class="number">0</span>))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果发现并不符合我的预期, map 里面的 callback 函数根本没有被调用。查了下资料发现 callback 函数只会在有值的索引上被调用。而使用 Array 函数生成的数组，默认是没有值的。所以把代码改成了这个样子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">generate2dArray</span>(<span class="params">len</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>(len).fill(<span class="literal">undefined</span>).map(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">Array</span>(len).fill(<span class="number">0</span>))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>将所有值变成 undefined，当然其他值也是可以的。于是乎我们就有了一个非常简单的方式生成一个二维的数组。</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://7mnlhz.com1.z0.glb.clouddn.com/avatar.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Zhang Weijie">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Zhang Weijie. You can also call me Vijay. I'm a JavaScript Developer right now.
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2017/06/03/hexo-blog-auto-deploy-to-github-pages-best-practice/">Hexo 博客自动部署到 GitHub Pages 的最佳实践</a>
+        </p>
+    
+        <p>
+            <a href="/2017/06/02/js-generate-2d-array/">JS 生成二维数组</a>
+        </p>
+    
+        <p>
+            <a href="/2017/04/15/how-to-install-and-use-headless-chrome-on-macos/">【翻译】怎么在 macOS 上安装和使用 Headless Chrome</a>
+        </p>
+    
+        <p>
+            <a href="/2015/04/29/tools-developers-must-know/">例数开发者不得不知的工具</a>
+        </p>
+    
+        <p>
+            <a href="/2015/04/03/improve-vr-experience/">如何改善 VR 眼镜的体验c</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/zhangweijie-cn" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:email@zhangweijie.cn" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @zhangweijie.cn All right reserved
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

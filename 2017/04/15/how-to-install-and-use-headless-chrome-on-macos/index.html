@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="原文：How to install and use Headless Chrome on OSX
+
+这个教程会用详细的步骤教你在 macOS 上怎么去获取和运行 Headless Chrome 和怎么去使用 Chrome 团队提供的示例代码。
+Headless Chrome 解决了什么样的问题？Ch">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Zhang Weijie">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="【翻译】怎么在 macOS 上安装和使用 Headless Chrome"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Zhang Weijie&#39;s blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>【翻译】怎么在 macOS 上安装和使用 Headless Chrome - Zhang Weijie&#39;s blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Zhang Weijie's blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Zhang Weijie's blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
+                    Archives
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">【翻译】怎么在 macOS 上安装和使用 Headless Chrome</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2017-04-15</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+
+                    <!-- Main Post Content -->
+                    <blockquote>
+<p>原文：<a href="https://objectpartners.com/2017/04/13/how-to-install-and-use-headless-chrome-on-osx/" target="_blank" rel="external">How to install and use Headless Chrome on OSX</a></p>
+</blockquote>
+<p>这个教程会用详细的步骤教你在 macOS 上怎么去获取和运行 Headless Chrome 和怎么去使用 Chrome 团队提供的示例代码。</p>
+<h2 id="Headless-Chrome-解决了什么样的问题？"><a href="#Headless-Chrome-解决了什么样的问题？" class="headerlink" title="Headless Chrome 解决了什么样的问题？"></a>Headless Chrome 解决了什么样的问题？</h2><p>Chrome 的 Headless 模式是一个和网站交互的新方式，但是没有一个实际的界面显示在屏幕上。这看起来像是一个微不足道的改进，但对于从 Web 上抓取内容来说是一个巨大的飞跃。现在有一些稳定的非正式的解决方案去抓取，比如 PhantomJS 和 Nightmare（构建在 Electron 之上）。<del>这些方案都还没有消失</del>（编辑：PhantomJS 仅有的维护者已经<a href="https://groups.google.com/forum/#!topic/phantomjs/9aI5d-LDuNE" target="_blank" rel="external">辞职</a>），它们仍然是抓取 Web 非常棒的解决方案。如果你已经在自己的系统中运用了这些工具，你可以继续使它们。</p>
+<p>但是也有这样的说法，一些用户在使用 PhantomJS 和 Nightmare 的时候遇到了麻烦。这两个工具都有警告，当它们运行在 shell-only 系统（没有实际的屏幕或者窗口管理） 时。举个例子，当你在使用 Nightmare （一个 Electron 应用）时，为了运行这个应用你需要安装一个<a href="https://github.com/electron/electron/blob/master/docs/tutorial/testing-on-headless-ci.md" target="_blank" rel="external">虚拟的显示管理</a>。另外，自从 Nightmare 使用 Electron 构建之后，它与 Chrome 有着不用的安全模式，在生产环境测试的时候可能会无法捕获一些安全问题。</p>
+<h2 id="什么版本的-Chrome-支持-Headless-？"><a href="#什么版本的-Chrome-支持-Headless-？" class="headerlink" title="什么版本的 Chrome 支持 Headless ？"></a>什么版本的 Chrome 支持 Headless ？</h2><p>Headless Chrome 已经在 Chrome 59 中发布。截止 2017 年 4 月 13 日，Chrome Canary 是唯一包含 Chrome 59 的频道。这意味着现在，如果你想要使用 Headless 你需要安装 Chrome Canary。将来 Chrome 的开发团队会把 Chrome 59 放到主要的 Chrome 版本中，你就不需要安装 Chrome Canary 了。<br>安装 Chrome Canary ，你可以<a href="https://www.google.com/chrome/browser/canary.html" target="_blank" rel="external">下载</a>或者用 homebrew 安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install Caskroom/versions/google-chrome-canary</div></pre></td></tr></table></figure>
+<h2 id="我怎么找到-Headless-Chrome？"><a href="#我怎么找到-Headless-Chrome？" class="headerlink" title="我怎么找到 Headless Chrome？"></a>我怎么找到 Headless Chrome？</h2><p>很多例子在使用 Headless Chrome 时，只用了一个简单的 <code>chrome</code> 命令。这可以在 Linux 下很好的工作，但是在 macOS 上不行，因为命令没有被安装在你的 <code>PATH</code> 中。<br>所以你需要找到 Chrome 的路径，让我们启动我们的终端去找 Chrome Canary 安装在我们系统的哪里。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo find / -type d -name <span class="string">"*Chrome Canary.app"</span></div></pre></td></tr></table></figure>
+<p>你可能会得到一些权限错误，但是你还是会得到一个路径长得像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/Google Chrome Canary.app</div></pre></td></tr></table></figure>
+<p>我们找到了 Chrome Canary 的路径，我们可以使用它启动 Chrome 并使它运行在  Headless 模式。</p>
+<h2 id="我怎么启动-Headless-Chrome？"><a href="#我怎么启动-Headless-Chrome？" class="headerlink" title="我怎么启动 Headless Chrome？"></a>我怎么启动 Headless Chrome？</h2><p>我们得到 Chrome Canary 的路径以后，我们需要用一个命令启动 Chrome 作为一个 Headless 服务。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --headless --remote-debugging-port=9222 --disable-gpu https://chromium.org</div></pre></td></tr></table></figure>
+<p>特别需要注意的是我们转义了文件名中空格，深入到 Mac .app 文件中去找到实际的 Chrome 二进制文件。然后我们通过启动参数去启动了一个 Headless 浏览器，给它一个初始化的链接 <code>https://chromium.org</code>。这个浏览器会监听 <code>9222</code> 端口等待接下来的指令。保持这个标签和服务运行。 打开另一个标签，我们将会连接到这个浏览器的这个标签，然后给一些指令。</p>
+<h2 id="我怎么使用-Headless-Chrome-抓取数据？"><a href="#我怎么使用-Headless-Chrome-抓取数据？" class="headerlink" title="我怎么使用 Headless Chrome 抓取数据？"></a>我怎么使用 Headless Chrome 抓取数据？</h2><p>我将要使用 Node.js 去连接我们运行中的 Chrome Canary 实例。你需要确保你已经安装了 Node，才可以继续这个步骤。<br>让我们生成一个普通的 Node 项目，只有一个依赖那就是 Chrome Remote Interface 包，它可以帮助我们与 Chrome 沟通。然后我们创建一个空白的 <code>index.js</code> 文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir my-headless-chrome &amp;&amp; <span class="built_in">cd</span> my-headless-chrome</div><div class="line">npm init --yes</div><div class="line">npm install --save chrome-remote-interface </div><div class="line">touch index.js</div></pre></td></tr></table></figure>
+<p>现在我们将要放一些代码到<code>index.js</code>。这个模板例子是由 Chrome 团队提供的。它指示这个浏览器导航到<code>github.com</code>，然后通过 <code>client</code> 里的 <code>Network</code> 属性捕获这个页面上所有的网络请求。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> CDP = <span class="built_in">require</span>(<span class="string">"chrome-remote-interface"</span>);</div><div class="line"> </div><div class="line">CDP(<span class="function"><span class="params">client</span> =&gt;</span> &#123;</div><div class="line">  <span class="comment">// extract domains</span></div><div class="line">  <span class="keyword">const</span> &#123; Network, Page &#125; = client;</div><div class="line">  <span class="comment">// setup handlers</span></div><div class="line">  Network.requestWillBeSent(<span class="function"><span class="params">params</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(params.request.url);</div><div class="line">  &#125;);</div><div class="line">  Page.loadEventFired(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    client.close();</div><div class="line">  &#125;);</div><div class="line">  <span class="comment">// enable events then start!</span></div><div class="line">  <span class="built_in">Promise</span>.all([Network.enable(), Page.enable()])</div><div class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">return</span> Page.navigate(&#123; <span class="attr">url</span>: <span class="string">"https://github.com"</span> &#125;);</div><div class="line">    &#125;)</div><div class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.error(err);</div><div class="line">      client.close();</div><div class="line">    &#125;);</div><div class="line">&#125;).on(<span class="string">"error"</span>, err =&gt; &#123;</div><div class="line">  <span class="comment">// cannot connect to the remote endpoint</span></div><div class="line">  <span class="built_in">console</span>.error(err);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>最后启动我们的 Node 应用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node index.js</div></pre></td></tr></table></figure>
+<p>我们可以看到 Chrome 发出的所有的网络请求，然而并没有一个实际的浏览器窗口。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">https://github.com/</div><div class="line">https://assets-cdn.github.com/assets/frameworks-12d63ce1986bd7fdb5a3f4d944c920cfb75982c70bc7f75672f75dc7b0a5d7c3.css</div><div class="line">https://assets-cdn.github.com/assets/github-2826bd4c6eb7572d3a3e9774d7efe010d8de09ea7e2a559fa4019baeacf43f83.css</div><div class="line">https://assets-cdn.github.com/assets/site-f4fa6ace91e5f0fabb47e8405e5ecf6a9815949cd3958338f6578e626cd443d7.css</div><div class="line">https://assets-cdn.github.com/images/modules/site/home-illo-conversation.svg</div><div class="line">https://assets-cdn.github.com/images/modules/site/home-illo-chaos.svg</div><div class="line">https://assets-cdn.github.com/images/modules/site/home-illo-business.svg</div><div class="line">https://assets-cdn.github.com/images/modules/site/integrators/slackhq.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/integrators/zenhubio.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/integrators/travis-ci.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/integrators/atom.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/integrators/circleci.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/integrators/codeship.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/integrators/codeclimate.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/integrators/gitterhq.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/integrators/waffleio.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/integrators/heroku.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/logos/airbnb-logo.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/logos/sap-logo.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/logos/ibm-logo.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/logos/google-logo.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/logos/paypal-logo.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/logos/bloomberg-logo.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/logos/spotify-logo.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/logos/swift-logo.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/logos/facebook-logo.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/logos/node-logo.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/logos/nasa-logo.png</div><div class="line">https://assets-cdn.github.com/images/modules/site/logos/walmart-logo.png</div><div class="line">https://assets-cdn.github.com/assets/compat-8a4318ffea09a0cdb8214b76cf2926b9f6a0ced318a317bed419db19214c690d.js</div><div class="line">https://assets-cdn.github.com/assets/frameworks-6d109e75ad8471ba415082726c00c35fb929ceab975082492835f11eca8c07d9.js</div><div class="line">https://assets-cdn.github.com/assets/github-5d29649478f4a2b05588bbd0d25cd56ff5445b21df31b4cccca942ad8687e1e8.js</div><div class="line">https://assets-cdn.github.com/images/modules/site/heroes/home-code-bg-alt-01.svg</div><div class="line">https://assets-cdn.github.com/static/fonts/roboto/roboto-light.woff</div><div class="line">https://assets-cdn.github.com/static/fonts/roboto/roboto-regular.woff</div><div class="line">https://assets-cdn.github.com/static/fonts/roboto/roboto-medium.woff</div></pre></td></tr></table></figure>
+<p>这是一个非常棒的方式去查看加载了那些资源，但是如果我想要操作页面上的 DOM 元素呢？我们用可以像这样的一个脚本拉取<code>github.com</code>上所有的<code>img</code>标签。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> CDP = <span class="built_in">require</span>(<span class="string">"chrome-remote-interface"</span>);</div><div class="line"> </div><div class="line">CDP(<span class="function"><span class="params">chrome</span> =&gt;</span> &#123;</div><div class="line">  chrome.Page</div><div class="line">    .enable()</div><div class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">return</span> chrome.Page.navigate(&#123; <span class="attr">url</span>: <span class="string">"https://github.com"</span> &#125;);</div><div class="line">    &#125;)</div><div class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      chrome.DOM.getDocument(<span class="function">(<span class="params">error, params</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span> (error) &#123;</div><div class="line">          <span class="built_in">console</span>.error(params);</div><div class="line">          <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">const</span> options = &#123;</div><div class="line">          <span class="attr">nodeId</span>: params.root.nodeId,</div><div class="line">          <span class="attr">selector</span>: <span class="string">"img"</span></div><div class="line">        &#125;;</div><div class="line">        chrome.DOM.querySelectorAll(options, (error, params) =&gt; &#123;</div><div class="line">          <span class="keyword">if</span> (error) &#123;</div><div class="line">            <span class="built_in">console</span>.error(params);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">          &#125;</div><div class="line">          params.nodeIds.forEach(<span class="function"><span class="params">nodeId</span> =&gt;</span> &#123;</div><div class="line">            <span class="keyword">const</span> options = &#123;</div><div class="line">              <span class="attr">nodeId</span>: nodeId</div><div class="line">            &#125;;</div><div class="line">            chrome.DOM.getAttributes(options, (error, params) =&gt; &#123;</div><div class="line">              <span class="keyword">if</span> (error) &#123;</div><div class="line">                <span class="built_in">console</span>.error(params);</div><div class="line">                <span class="keyword">return</span>;</div><div class="line">              &#125;</div><div class="line">              <span class="built_in">console</span>.log(params.attributes);</div><div class="line">            &#125;);</div><div class="line">          &#125;);</div><div class="line">        &#125;);</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;).on(<span class="string">"error"</span>, err =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.error(err);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>我们可以得到以下的数据结构展现了页面上标签包含所有图片的链接。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div></pre></td><td class="code"><pre><div class="line">[ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/home-illo-conversation.svg'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">''</span>,</div><div class="line">   <span class="string">'width'</span>,</div><div class="line">   <span class="string">'360'</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'d-block width-fit mx-auto'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/home-illo-chaos.svg'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">''</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'d-block width-fit mx-auto'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/home-illo-business.svg'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">''</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'d-block width-fit mx-auto mb-4'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/integrators/slackhq.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">''</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'d-block integrations-collage-img width-fit mx-auto'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/integrators/zenhubio.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">''</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'d-block integrations-collage-img width-fit mx-auto'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/integrators/travis-ci.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">''</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'d-block integrations-collage-img width-fit mx-auto'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/integrators/atom.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">''</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'d-block integrations-collage-img width-fit mx-auto'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/integrators/circleci.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">''</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'d-block integrations-collage-img width-fit mx-auto'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/integrators/codeship.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">''</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'d-block integrations-collage-img width-fit mx-auto'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/integrators/codeclimate.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">''</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'d-block integrations-collage-img width-fit mx-auto'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/integrators/gitterhq.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">''</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'d-block integrations-collage-img width-fit mx-auto'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/integrators/waffleio.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">''</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'d-block integrations-collage-img width-fit mx-auto'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/integrators/heroku.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">''</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'d-block integrations-collage-img width-fit mx-auto'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/logos/airbnb-logo.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">'Airbnb'</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'logo-img px-2 px-sm-4 px-md-5 px-lg-0'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/logos/sap-logo.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">'SAP'</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'logo-img px-2 px-sm-4 px-md-5 px-lg-0'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/logos/ibm-logo.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">'IBM'</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'logo-img px-2 px-sm-4 px-md-5 px-lg-0'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/logos/google-logo.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">'Google'</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'logo-img px-2 px-sm-4 px-md-5 px-lg-0'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/logos/paypal-logo.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">'PayPal'</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'logo-img px-2 px-sm-4 px-md-5 px-lg-0'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/logos/bloomberg-logo.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">'Bloomberg'</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'logo-img px-2 px-sm-4 px-md-5 px-lg-0'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/logos/spotify-logo.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">'Spotify'</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'logo-img px-2 px-sm-4 px-md-5 px-lg-0'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/logos/swift-logo.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">'Swift'</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'logo-img px-2 px-sm-4 px-md-5 px-lg-0'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/logos/facebook-logo.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">'Rails'</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'logo-img px-2 px-sm-4 px-md-5 px-lg-0'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/logos/node-logo.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">'Node'</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'logo-img px-2 px-sm-4 px-md-5 px-lg-0'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/logos/nasa-logo.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">'Nasa'</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'logo-img px-2 px-sm-4 px-md-5 px-lg-0'</span> ]</div><div class="line"> [ <span class="string">'src'</span>,</div><div class="line">   <span class="string">'https://assets-cdn.github.com/images/modules/site/logos/walmart-logo.png'</span>,</div><div class="line">   <span class="string">'alt'</span>,</div><div class="line">   <span class="string">'Walmart'</span>,</div><div class="line">   <span class="string">'class'</span>,</div><div class="line">   <span class="string">'logo-img px-2 px-sm-4 px-md-5 px-lg-0'</span> ]</div></pre></td></tr></table></figure>
+<p>让我们愉快的抓取吧！</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://7mnlhz.com1.z0.glb.clouddn.com/avatar.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Zhang Weijie">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Zhang Weijie. You can also call me Vijay. I'm a JavaScript Developer right now.
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2017/06/03/hexo-blog-auto-deploy-to-github-pages-best-practice/">Hexo 博客自动部署到 GitHub Pages 的最佳实践</a>
+        </p>
+    
+        <p>
+            <a href="/2017/06/02/js-generate-2d-array/">JS 生成二维数组</a>
+        </p>
+    
+        <p>
+            <a href="/2017/04/15/how-to-install-and-use-headless-chrome-on-macos/">【翻译】怎么在 macOS 上安装和使用 Headless Chrome</a>
+        </p>
+    
+        <p>
+            <a href="/2015/04/29/tools-developers-must-know/">例数开发者不得不知的工具</a>
+        </p>
+    
+        <p>
+            <a href="/2015/04/03/improve-vr-experience/">如何改善 VR 眼镜的体验c</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/zhangweijie-cn" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:email@zhangweijie.cn" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @zhangweijie.cn All right reserved
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

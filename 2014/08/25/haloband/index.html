@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Haloband到底是什么？
+从硬件上来说Haloband就是 3 个 NFC 标签，两个作为触发器，一个作为活标签(自造词)，何为活标签？不需要改写 NFC 标签，却可以改变里面承载的内容。也即是 Haloband 所谓的云服务。
+下面我将从各方面来解析Haloband。
+触发器Haloband有">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Zhang Weijie">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Haloband 全解析"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Zhang Weijie&#39;s blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Haloband 全解析 - Zhang Weijie&#39;s blog</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Zhang Weijie's blog">
+            <img src="http://www.codeblocq.com/assets/projects/hexo-theme-anodyne/assets/anodyne.svg" class="dib h3" alt="Zhang Weijie's blog">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Home">
+                    Home
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archives">
+                    Archives
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Haloband 全解析</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2014-08-25</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Tags Vertical -->
+                    
+
+                    <!-- Main Post Content -->
+                    <p><code>Haloband</code>到底是什么？</p>
+<p>从硬件上来说<code>Haloband</code>就是 3 个 NFC 标签，两个作为触发器，一个作为<code>活标签</code>(自造词)，何为<code>活标签</code>？不需要改写 NFC 标签，却可以改变里面承载的内容。也即是 Haloband 所谓的云服务。</p>
+<p>下面我将从各方面来解析<code>Haloband</code>。</p>
+<h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2><p><code>Haloband</code>有 A，B 两个触发器。可以实现 6 个触发动作：A, B, A-&gt;B, B-&gt;A, A-&gt;A, B-&gt;B。<br>每个动作可以触发一个任务。<br>什么社交签到，切歌，手电筒，SOS 地理位置，拨打电话，导航，抓拍，解锁手机都是基于此。</p>
+<p>那么这个是原创的吗？</p>
+<p>当然不是。有一个神器玩 NFC 的人大概都知道，<code>Trigger</code>(原名 NFC Task Launcher)。我不知道这是不是最早的，这个我无法考究，但应该是很早。<code>Trigger</code>的触发器种类非常丰富。免费版的有 wifi，蓝牙，NFC。付费版的有电池电量，时间，充电，耳机，日历时间，甚至是地理位置。任务也是非常的丰富。就不展开了，自行下载体验。没有 NFC 也能用哦。</p>
+<p><code>Haloband</code>是<code>云飞网</code>的作品。云飞网也有类似<code>Trigger</code>的作品。可是功能就比较简陋了，叫<code>云飞 NFC</code>。</p>
+<p>Trigger 界面</p>
+<p><img src="http://zhangweijie.qiniudn.com/haloband-Trigger.jpg" alt="Trigger 界面"></p>
+<p>云飞 NFC 界面</p>
+<p><img src="http://zhangweijie.qiniudn.com/haloband-%E4%BA%91%E9%A3%9E.jpg" alt="云飞 NFC 界面"></p>
+<p>那么<code>Haloband</code>在这个方面有创新的地方吗？</p>
+<p>还是有的。不需要写东西到 NFC 标签。利用两个触发器，实现 6 个触发动作。更加适合移动使用。加入了比较 fashion 的东西，如控制飞利浦的 Hue 电灯。加入了<code>IFTTT</code>，可以实现更多有趣的功能。</p>
+<blockquote>
+<p>IFTTT，是一个新生的网络服务平台，通过不同其他平台的条件来决定是否执行下一条命令。即对网络服务通过其他网络服务作出反应作出反映。IFTTT 得名为其口号「if this then that」。</p>
+</blockquote>
+<p>NFC 标签作为触发器是合适的。可以放在移动的场合，就些不伦不类了。<br>会有误触的问题，而且手环是在动的。标签的位置并不固定。手还得转一下，才能碰到标签。<br>这看起来是个很二的行为。</p>
+<h2 id="云服务"><a href="#云服务" class="headerlink" title="云服务"></a>云服务</h2><p>cloud 标签是一个<code>活标签</code>。因为没有<code>Haloband</code>实物，所以软件也不能用。还好在<code>云飞网</code>找到了这样的云服务。<br>每个标签有一个固定的链接。通过改变云端的内容，来实现不用的功能，都是通过浏览器实现。<code>云飞网</code>提供了 URL，电话号码，名片，文本，HTML，投票六个选项。</p>
+<p>其中投票不可用。HTML，文本，电话号码用的技术其实是一模一样，就是加载一个静态的 HTML 文档，电话号码就是加上<code>tel：</code>的标志，来告诉浏览器这是一个电话号码，点击即可拨号，网页非常简陋。URL 就是一个跳转服务，类似于新浪的短地址。名片就是把你填写的内容，生成一个 VCF 格式的名片，下载后，打开会自动导入到手机中。名片功能是亮点，这里点个赞。</p>
+<p><code>草料二维码</code>有提供类似服务。二维码和 NFC 标签其实都是一样的。只是一个把文本内容变成二维码，一个写入到标签而已。</p>
+<p>云飞电话界面</p>
+<p><img src="http://zhangweijie.qiniudn.com/haloband-%E4%BA%91%E9%A3%9E%E7%94%B5%E8%AF%9D.jpg" alt="云飞电话界面"></p>
+<p>草料电话界面</p>
+<p><img src="http://zhangweijie.qiniudn.com/haloband-%E8%8D%89%E6%96%99%E7%94%B5%E8%AF%9D.jpg" alt="草料电话界面"></p>
+<h2 id="解锁、签到"><a href="#解锁、签到" class="headerlink" title="解锁、签到"></a>解锁、签到</h2><p>解锁、签到的核心都是用手环来作为身份 ID。</p>
+<p><code>Haloband</code>可以解锁手机和应用。NFC 可以是可以加密的，所以安全性也有一定的保障。当然这个保障是相对的，还是有办法破解的。<br>给应用加锁并不需要 ROOT 权限。只要开启一个服务监听栈顶应用程序，如果是加锁的应用，则弹出验证界面。</p>
+<p>如果你认为你买了<code>Haloband</code>就可以替代门禁卡了。那你就太天真了。<br>需要门禁系统的硬件和软件支持才可以的哦。</p>
+<p>当然我始终认为，用手环这样的东西。作为身份 ID 并不是一个很好的方案。<br>人身上有能够识别身份的东西，比如指纹。更安全，也更优雅。</p>
+<h2 id="营销"><a href="#营销" class="headerlink" title="营销"></a>营销</h2><p>在国外众筹的时候，还挺高大上的。怎么一上国内就 Low 了呢。<br>各位看官自行对比 <a href="https://www.kickstarter.com/projects/haloband/haloband-control-your-smartphone-with-simple-wrist" target="_blank" rel="external">kickstarter</a>，<a href="http://hi.taobao.com/market/hi/detail2014.php?id=1692" target="_blank" rel="external">淘宝众筹</a>。</p>
+<p>各种调侃小米手环，根本不是一个品类好吗？<br>这样偷换概念，拿一个不是一个品类的东西做对比，真的好吗？<br>反正我是瞬间感觉被侮辱智商。</p>
+<p>不过国人吃这一套，看支持数量就知道了。价格 39 元，相比在国外的售价算是上良心了。不能单纯的以物料成本计算。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>创新的东西有，但没有自己的核心技术。让人们知道，手环还可以这么做，虽然我觉得有些鸡肋。<code>Haloband</code>是一个可以玩的东西，但新鲜以后呢，能给用户带来多大的价值，值得思考。</p>
+<p>最后还是希望越做越好，给中国人长面。不做<code>Copycat</code>，继续创新。</p>
+<p>(文中如有纰漏之处敬请指正)</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="http://7mnlhz.com1.z0.glb.clouddn.com/avatar.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Zhang Weijie">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            My name is Zhang Weijie. You can also call me Vijay. I'm a JavaScript Developer right now.
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Recent Posts</h3>
+    
+        <p>
+            <a href="/2017/06/03/hexo-blog-auto-deploy-to-github-pages-best-practice/">Hexo 博客自动部署到 GitHub Pages 的最佳实践</a>
+        </p>
+    
+        <p>
+            <a href="/2017/06/02/js-generate-2d-array/">JS 生成二维数组</a>
+        </p>
+    
+        <p>
+            <a href="/2017/04/15/how-to-install-and-use-headless-chrome-on-macos/">【翻译】怎么在 macOS 上安装和使用 Headless Chrome</a>
+        </p>
+    
+        <p>
+            <a href="/2015/04/29/tools-developers-must-know/">例数开发者不得不知的工具</a>
+        </p>
+    
+        <p>
+            <a href="/2015/04/03/improve-vr-experience/">如何改善 VR 眼镜的体验c</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/zhangweijie-cn" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:email@zhangweijie.cn" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                @zhangweijie.cn All right reserved
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
